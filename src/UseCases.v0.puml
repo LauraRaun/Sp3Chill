@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+!pragma layout smetana
+
+  actor user as u
+
+
+  usecase "Log Into User" as UC1
+  usecase "Register User" as UC2
+  usecase "Start Menu" as UC3
+  usecase "Watch Movie" as UC4
+
+
+
+
+@enduml
