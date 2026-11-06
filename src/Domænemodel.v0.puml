@@ -43,6 +43,13 @@ Category <|-- WatchLater
 Category <|-- Sports
 Category <|-- Documentary
 Category <|-- Movies
+Category <|-- War
+Category <|-- Crime
+Category <|-- SavedMovies
+Category <|-- Drama
+Category <|-- ShowsAndSeries
+
+
 
 
 

@@ -1,27 +1,81 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+class Main{
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Movies {
+- int public MovieLength
+- String public Title
+- int public ReleaseYear
+- String public Category
++ ArrayList<String> Genre(Drama, Sci-fi, Romantic, Anime, Documentary)
+
 }
+
+abstract class Media {
+- String public Title
+- int public ReleaseYear
+-
+}
+
+class Streaming {
+- int public MovieLength
++ void PlayButton()
++ void PauseButton()
++ void SpeedButton()
++ void ChangeSubtitles()
+
+
+}
+
+class Category {
+- String public Genre
+}
+
+class FileIO {
++ void SaveUser()
++ void LoadUser()
++ void LoadMedia() Arraylists
+
+}
+
+class TextIO {
+- Scan scanner
+}
+
+class Series {
+- int public Episodes
+- int public Episodelength
++ void PlayButton()
+}
+
+class SearchBar{
+- public String Genre
+- public String Title
+- public String Actor
+- public int ReleaseYear
+- public double MovieRatings
+}
+
+
+class User {
+- private String Username
+- private String password
+- private Arraylists <WatchedMedia>
+- private Arraylists <SavedMovies>
++void DeleteMovie()
++void SaveMovie()
++void SearchMovie()
+}
+
+
+class StartMenu {
++void LogIntoUser()
++void RegisterUser()
+}
+
 
 @enduml
