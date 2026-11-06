@@ -9,6 +9,8 @@
   usecase "Register User" as UC2
   usecase "Start Menu" as UC3
   usecase "Watch Movie" as UC4
+   usecase "Log out of User" as UC5
+
 
 
 

@@ -78,4 +78,17 @@ class StartMenu {
 }
 
 
+Media --> Movies
+Media --> Series
+User --> StartMenu
+StartMenu --> Media
+User --> SearchBar
+Movies --> Category
+Series --> Category
+Main --> User
+User --> Streaming
+Streaming --> Media
+Streaming --> FileIO
+User --> TextIO
+TextIO --> FileIO
 @enduml
