@@ -1,95 +1,53 @@
 @startuml
 'https://plantuml.com/class-diagram
-!pragma layout smetana
 
-class Main{
+class Main
+Main-->StreamingServices
+class Menu
+class StreamingServices
+abstract class Media
+StreamingServices--|>Menu
+StreamingServices--|>FileIO
+class  FileIO
+StreamingServices--|>Media
+class User
+class Film
+StreamingServices--|>User
+Media<--Film
+User--Media
 
+class StreamingServices {
+-movies : ArrayList<Movie>
+  -users : ArrayList<User>
+  -currentUser : User
+  +start()
+  +createUser()
+  +login() : boolean
+  +searchByTitle()
+  +searchByCategory()
+  +chooseFromList(list, emptyMessage)
+  +play(movie)
 }
-
-class Movies {
-- int public MovieLength
-- String public Title
-- int public ReleaseYear
-- String public Category
-+ ArrayList<String> Genre(Drama, Sci-fi, Romantic, Anime, Documentary)
-
-}
-
-abstract class Media {
-- String public Title
-- int public ReleaseYear
--
-}
-
-class Streaming {
-- int public MovieLength
-+ void PlayButton()
-+ void PauseButton()
-+ void SpeedButton()
-+ void ChangeSubtitles()
-
-
-}
-
-class Category {
-- String public Genre
-}
-
 class FileIO {
-+ void SaveUser()
-+ void LoadUser()
-+ void LoadMedia() Arraylists
-
+  {static} +readMovies(path) : ArrayList<Movie>
+  {static} +readUsers(path, movies) : ArrayList<User>
+  {static} +saveUsers(path, users)
 }
-
-class TextIO {
-- Scan scanner
+class Film {
+  -title : String
+  -year : int
+  -categories : ArrayList<String>
+  -rating : double
+  +toString() : String
 }
-
-class Series {
-- int public Episodes
-- int public Episodelength
-+ void PlayButton()
-}
-
-class SearchBar{
-- public String Genre
-- public String Title
-- public String Actor
-- public int ReleaseYear
-- public double MovieRatings
-}
-
-
 class User {
-- private String Username
-- private String password
-- private Arraylists <WatchedMedia>
-- private Arraylists <SavedMovies>
-+void DeleteMovie()
-+void SaveMovie()
-+void SearchMovie()
+  -username : String
+  -password : String
+  -seenMovies : ArrayList<Movie>
+  -savedMovies : ArrayList<Movie>
+  +addSeen(movie)
+  +saveMovie(movie)
+  +removeSaved(movie)
 }
-
-
-class StartMenu {
-+void LogIntoUser()
-+void RegisterUser()
-}
-
-
-Media --> Movies
-Media --> Series
-User --> StartMenu
-StartMenu --> Media
-User --> SearchBar
-Movies --> Category
-Series --> Category
-Main --> User
-User --> Streaming
-Streaming --> Media
-Streaming --> FileIO
-User --> TextIO
-TextIO --> FileIO
 
 @enduml

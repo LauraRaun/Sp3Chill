@@ -2,14 +2,8 @@
 object User
 object Media
 User *-- Media
-object Category
-Category*-- Media
 object Film
 Media*--Film
-object Series
-Media*--Series
-object Sesoner
-Series*--Sesoner
 
 
 @enduml
