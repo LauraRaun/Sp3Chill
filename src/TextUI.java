@@ -117,13 +117,37 @@ public class TextUI {
 
         if(favorites.isEmpty()){
 
-            System.out.println("Your favorites is empty");
+            System.out.println("Your favorites are empty");
 
         } else {
 
-            for (Movie movie : favorites){
-                System.out.println(movie);
+            for (int i = 0; i < favorites.size(); i++) {
+                System.out.println((i + 1) + ". " + favorites.get(i));
+            }
+
+            System.out.println("Would you like to play one of your favorite movies? (yes/no)");
+            String answer = scan.nextLine().toLowerCase();
+
+            if (answer.equals("yes")) {
+                System.out.println("Choose a number:");
+                try {
+                    int choice = Integer.parseInt(scan.nextLine());
+
+                    if (choice >= 1 && choice <= favorites.size()) {
+                        Movie chosen = favorites.get(choice - 1);
+                        startMovie(chosen);
+                    } else {
+                        System.out.println("There is no movie with this number");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("You have to choose a number.");
+                }
             }
         }
+
+
+
     }
+
+
 }

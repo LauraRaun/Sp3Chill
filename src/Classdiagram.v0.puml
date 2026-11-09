@@ -1,5 +1,8 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+
 
 class Main
 Main-->StreamingServices
