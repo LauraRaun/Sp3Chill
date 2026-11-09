@@ -3,10 +3,10 @@
 
 class Main
 Main-->StreamingServices
-class Menu
+class TextUI
 class StreamingServices
 abstract class Media
-StreamingServices--|>Menu
+StreamingServices--|>TextUI
 StreamingServices--|>FileIO
 class  FileIO
 StreamingServices--|>Media
@@ -48,6 +48,11 @@ class User {
   +addSeen(movie)
   +saveMovie(movie)
   +removeSaved(movie)
+}
+class TextUI {
+-ArrayList<Movie> movies
+- ArrayList<Movie> favorites
+- Scanner scan
 }
 
 @enduml
