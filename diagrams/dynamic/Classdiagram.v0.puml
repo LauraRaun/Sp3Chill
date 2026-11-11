@@ -1,8 +1,5 @@
 @startuml
 'https://plantuml.com/class-diagram
-!pragma layout smetana
-
-
 
 class Main
 Main-->StreamingServices
@@ -16,8 +13,8 @@ StreamingServices--|>Media
 class User
 class Film
 StreamingServices--|>User
-Media<--Film
-User--Media
+Media<--Film: is a
+User-->Media:has a
 
 class StreamingServices {
 -movies : ArrayList<Movie>

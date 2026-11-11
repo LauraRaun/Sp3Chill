@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+class Main
+class Film
+class TextUI
+class User
+class FileIO
+
+Main--|>TextUI
+Main--> User
+Main--|>FileIO
+User-->Film
+
+class User {
+  -username : String
+  -password : String
+  -seenMovies : ArrayList<Movie>
+  -savedMovies : ArrayList<Movie>
+  +addSeen(movie)
+  +saveMovie(movie)
+  +removeSaved(movie)
+  }
+class Film {
+  -title : String
+  -year : int
+  -categories : ArrayList<String>
+  -rating : double
+  +toString() : String
+  }
+class TextUI {
+-ArrayList<Movie> movies
+- ArrayList<Movie> favorites
+- Scanner scan
+}
+class FileIO {
+  {static} +readMovies(path) : ArrayList<Movie>
+  {static} +readUsers(path, movies) : ArrayList<User>
+  {static} +saveUsers(path, users)
+}
+
+@enduml

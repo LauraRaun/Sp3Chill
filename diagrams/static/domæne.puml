@@ -1,12 +1,11 @@
 @startuml
-!pragma layout smetana
-
 
 object User
 object Media
 User *-- Media
 object Film
 Media*--Film
-
+object Streamingservices
+Streamingservices--*User
 
 @enduml
