@@ -3,41 +3,81 @@
 
 
 class Main
-class Film
+class Movie
 class TextUI
 class User
 class FileIO
 
-Main--|>TextUI
-Main--> User
-Main--|>FileIO
-User-->Film: has 0 or many
+Main..>TextUI
+Main..>FileIO
+FileIO..>Movie: creates
+User-->Movie: has 0 or many
+TextUI-->Movie
+TextUI-->User
+
+class Main{
++main(args: String []): void
+}
 
 class User {
   -username : String
   -password : String
+  -saveMovie: ArrayList<Movie>
   -seenMovies : ArrayList<Movie>
-  -savedMovies : ArrayList<Movie>
-  +addSeen(movie)
-  +saveMovie(movie)
-  +removeSaved(movie)
+
+  +User(username: String, password: String)
+  +getUsername (): String
+  +checkPassword(password: String): boolean
+  +saveMovie(movie: Movie): void
+  +addSeenMovie (movie : Movie): void
+  +getSavedMovies ():ArrayList<Movie>
+  +getSeenMovies (): ArrayList<Movie>
+
   }
-class Film {
+class Movie {
   -title : String
   -year : int
-  -categories : ArrayList<String>
+  -categories: String
   -rating : double
+
+  +Movie(title: String, year: int, categories:String, rating: double)
+  +getTitle (): String
+  +getYear(): int
+  +getCategory(): String
+  +getRating(): double
   +toString() : String
   }
 class TextUI {
--ArrayList<Movie> movies
-- ArrayList<Movie> favorites
-- Scanner scan
+- movies: ArrayList<Movie> movies
+- favorites: ArrayList<Movie> favorites
+- scan: Scanner scan
+-user: User
+
++ TextUI(movies: ArrayList<Movie>, scan: Scanner)
++start(): void
+-registerUser(): void
+-loginUser(): boolean
+-showMainMenu(): void
++showMovies(): void
+-searchMovie(): void
+-selectedMovie(movie : Movie): void
++startMovie(movie : Movie): void
++saveMovie (movie : Movie): void
+-showSavedMovies(): void
+-showSeenMovies(): void
++addToFavorites(movie : Movie): void
+-showFavorites(): void
+
 }
 class FileIO {
   {static} +readMovies(path) : ArrayList<Movie>
   {static} +readUsers(path, movies) : ArrayList<User>
   {static} +saveUsers(path, users)
+
+  +readMoviesFromFile(fileName: String): ArrayList<Movie>
 }
+
+
+
 
 @enduml
