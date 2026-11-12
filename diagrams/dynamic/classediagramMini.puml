@@ -11,7 +11,7 @@ class FileIO
 Main--|>TextUI
 Main--> User
 Main--|>FileIO
-User-->Film
+User-->Film: has 0 or many
 
 class User {
   -username : String
