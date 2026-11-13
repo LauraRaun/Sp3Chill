@@ -20,8 +20,8 @@ public class Main {
 
         } catch (IOException e) {
 
-            System.out.println("ERROR");
-            System.out.println(e.getMessage());
+            System.out.println("Filmene kunne ikke indlæses. Tjek at filen Movie.csv ligger i projektmappen.");
+            System.out.println("Programmet lukker.");
         }
     }
 }
